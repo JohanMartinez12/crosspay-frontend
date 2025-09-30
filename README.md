@@ -1,59 +1,119 @@
-# CrosspayFrontend
+# Crosspay Solutions – Fullstack App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
+Este proyecto fue desarrollado como parte de una **prueba técnica** para la construcción de un sistema de pagos con autenticación básica.  
+La solución incluye un **Frontend en Angular** y un **Backend en .NET 7**, conectados a **SQL Server**.
 
-## Development server
+---
 
-To start a local development server, run:
+## Tecnologías utilizadas
+
+### Frontend
+- **Angular 20** (standalone components, Angular CLI)  
+- **TypeScript**  
+- **Bootstrap 5** – estilos y responsive design  
+- **HttpClient** – consumo de la API REST  
+- **Interceptor de Autenticación** – inyección de credenciales en cada request  
+
+### Backend
+- **.NET 7 Web API**  
+- **Entity Framework Core** – acceso a datos  
+- **SQL Server** – base de datos relacional  
+- **Swagger / Swashbuckle** – documentación interactiva de API  
+- **Autenticación Básica (BasicAuth)** – protección de endpoints  
+- **Clean Architecture (simplificada)** – separación de capas (Controllers, Services, Data, Models)  
+
+---
+
+## 📂 Estructura del proyecto
+
+crosspay-fullstack/
+
+├── crosspay-frontend/ # Proyecto Angular
+
+│ ├── src/app/Components/ # Componentes (PaymentForm, AdminLogin, AdminDashboard)
+
+│ ├── src/app/Services/ # Servicios (Auth, Transaction)
+
+│ └── src/assets/ # Recursos estáticos (logo, imágenes, etc.)
+
+│
+
+├── crosspay-backend/ # Proyecto .NET
+
+│ ├── Controllers/ # API Endpoints (TransactionController)
+
+│ ├── Models/ # Entidades (Transactions)
+
+│ ├── Services/ # Lógica de negocio (TransactionService)
+
+│ ├── Data/ # DbContext y configuración EF
+
+│ └── Program.cs # Configuración inicial
+
+---
+
+## Instalación y configuración
+
+### 1. Clonar el repositorio
 
 ```bash
-ng serve
+git clone https://github.com/usuario/crosspay-fullstack.git
+cd crosspay-fullstack
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. Backend (API .NET)
 
 ```bash
-ng generate component component-name
+cd crosspay-backend
+dotnet restore
+dotnet build
 ```
+Configurar la cadena de conexión
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=CrosspayDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
+```
+### 3. Frontend (Angular)
 
 ```bash
-ng generate --help
+cd crosspay-frontend
+npm install
+ng serve -o
 ```
+## Funcionalidades implementadas
 
-## Building
+## Frontend
 
-To build the project run:
+* Formulario de pago con envío de transacciones.
 
-```bash
-ng build
-```
+* Login de administrador con autenticación básica.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* Dashboard de administración que lista transacciones desde el backend.
 
-## Running unit tests
+## Backend
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+* POST /api/transaction → Crear nueva transacción.
 
-```bash
-ng test
-```
+* GET /api/transaction → Listar todas las transacciones.
 
-## Running end-to-end tests
+* Validaciones de monto y campos requeridos.
 
-For end-to-end (e2e) testing, run:
+* Autenticación básica (admin / Pass1234!).
 
-```bash
-ng e2e
-```
+## Autor
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Desarrollado por Johan Martínez
+Prueba técnica – Crosspay Solutions – 2025
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+
+
+
+
+
+
