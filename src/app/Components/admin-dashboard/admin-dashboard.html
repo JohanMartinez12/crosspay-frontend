@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2>Dashboard de Transacciones</h2>
+
+  <table class="table table-striped table-bordered mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Moneda</th>
+        <th>Monto</th>
+        <th>Descripción</th>
+        <th>Nombre</th>
+        <th>Tipo Documento</th>
+        <th>Últimos 4</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of transactions">
+        <td>{{ t.id }}</td>
+        <td>{{ t.currency }}</td>
+        <td>{{ t.amount }}</td>
+        <td>{{ t.description }}</td>
+        <td>{{ t.fullName }}</td>
+        <td>{{ t.documentType }}</td>
+        <td>{{ t.cardLast4 }}</td>
+        <td>{{ t.createdAt | date:'short' }}</td>
+        <td>
+          <span class="badge bg-warning text-dark">{{ t.status }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
